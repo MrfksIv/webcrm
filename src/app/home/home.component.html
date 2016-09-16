@@ -1,3 +1,14 @@
-<p>
-  home works!
-</p>
+
+<h3> Choose the latest .csv files:</h3>
+
+<form class="form-control myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+	<input id="file-input" style="color:white" type="file" class="btn" (change)="onChange($event)" [value]= "">
+	<button type="submit" class="btn btn-primary btn-mini">Ok</button>
+	<div *ngIf="name">
+		<label>Name: </label><p>{{ name }}</p>
+		<label>Last run: </label><p>{{ lastRun }}</p>
+	</div>
+	<button class="btn btn-primary" (click)="onShow()">test</button>
+</form>
+
+

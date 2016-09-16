@@ -1,3 +1,39 @@
-<p>
-  snapshot works!
-</p>
+
+
+
+<h3>Sales Snapshot report</h3>
+
+<fieldset>
+    <legend>Please select one of the following</legend>
+    <span *ngFor="let store of stores">
+    	<input type="checkbox" name="store" [value]="store"> <label>{{store}}</label>
+   	</span>
+
+</fieldset>
+
+<div class="table-container">
+ <!--   
+  <br><button (click)="changeOptions()">select 1 and 3</button>
+  <p>{{selectedValues | json}}`
+-->	
+	<table *ngIf="data" class="table table-hover table-bordered table-striped bordered">
+		<thead>
+			<tr>
+				<th *ngFor="let header of headers">{{ header | monthDate}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor=" let row of tableData; let i=index">
+			<!--	<td *ngFor="let val of row"> {{ val | numberDec}} </td> -->
+
+				<td *ngFor="let val of row; let k=index" [class.bold]="k==0"> {{ (tableData[i][2]==="Quantity" || tableData[i][2]==="Visits") ? (val| numberInt  | thousandSep) : (val | numberDec) | thousandSep }} </td>
+
+			</tr>
+		</tbody>	
+	</table>
+</div>
+
+
+
+
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadDataService } from '../../load-data.service';
 
 @Component({
   selector: 'app-crm',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrmComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loadService: LoadDataService) { }
 
   ngOnInit() {
+  }
+
+  print() {
+  	console.log(this.loadService.getData());
   }
 
 }
