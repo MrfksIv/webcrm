@@ -6,8 +6,10 @@
 <fieldset>
     <legend>Please select one of the following</legend>
     <span *ngFor="let store of stores">
-    	<input type="checkbox" name="store" [value]="store"> <label>{{store}}</label>
+    	<input type="checkbox" #ref name="store.name" [value]="store.name" [(ngModel)]="store.selected" (click)="getFilteredData()"> <label>{{store.name}}</label>
    	</span>
+   	<input type="text" >
+    <button (click)="test()">test</button>
 
 </fieldset>
 
@@ -23,7 +25,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor=" let row of tableData; let i=index">
+			<tr *ngFor=" let row of filteredTableData; let i=index">
 			<!--	<td *ngFor="let val of row"> {{ val | numberDec}} </td> -->
 
 				<td *ngFor="let val of row; let k=index" [class.bold]="k==0"> {{ (tableData[i][2]==="Quantity" || tableData[i][2]==="Visits") ? (val| numberInt  | thousandSep) : (val | numberDec) | thousandSep }} </td>
